@@ -12,6 +12,7 @@ public class App {
 		int boardWidth = columnCount * rowCount;
 		int boardHeight = rowCount * tileSize;
 		
+		
 		//creating the window object
 		JFrame window = new JFrame("Pac-Man");
 		window.setVisible(true);
@@ -21,6 +22,9 @@ public class App {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		PacMan pacmanGame = new PacMan();
+		window.add(pacmanGame);
+		window.pack();
+		window.setVisible(true);
 	}
 
 }
