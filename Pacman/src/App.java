@@ -15,10 +15,10 @@ public class App {
 		
 		//creating the window object
 		JFrame window = new JFrame("Pac-Man");
-		window.setVisible(true);
+		//window.setVisible(true);
 		window.setSize(boardWidth, boardHeight);
 		window.setLocationRelativeTo(null);
-		window.setResizable(false);
+		window.setResizable(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		PacMan pacmanGame = new PacMan();

@@ -42,16 +42,16 @@ public class PacMan extends JPanel {
 	private int boardHeight = rowCount * tileSize;
 	
 	//Creating representation
-	private Image wall;
-	private Image blueGhost;
-	private Image orangeGhost;
-	private Image pinkGhost;
-	private Image redGhost;
+	private Image wallPic;
+	private Image blueGhostPic;
+	private Image orangeGhostPic;
+	private Image pinkGhostPic;
+	private Image redGhostPic;
 	
-	private Image pacmanDown;
-	private Image pacmanLeft;
-	private Image pacmanRight;
-	private Image pacmanUp;
+	private Image pacmanDownPic;
+	private Image pacmanLeftPic;
+	private Image pacmanRightPic;
+	private Image pacmanUpPic;
 	
 	
 	// X = walls, O = Blankspace, P = Pac-Man, ' ' = pellets
@@ -92,18 +92,88 @@ public class PacMan extends JPanel {
 		setBackground(Color.BLACK);
 		
 		//load in images for map 
-		wall = new ImageIcon(getClass().getResource("./wall.png")).getImage();
-		blueGhost = new ImageIcon(getClass().getResource("./blueGhost.png")).getImage();
-		orangeGhost = new ImageIcon(getClass().getResource("./orangeGhost.png")).getImage();
-		pinkGhost = new ImageIcon(getClass().getResource("./pinkGhost.png")).getImage();
-		redGhost = new ImageIcon(getClass().getResource("./redGhost.png")).getImage();
+		wallPic = new ImageIcon(getClass().getResource("./wall.png")).getImage();
+		blueGhostPic = new ImageIcon(getClass().getResource("./blueGhost.png")).getImage();
+		orangeGhostPic = new ImageIcon(getClass().getResource("./orangeGhost.png")).getImage();
+		pinkGhostPic = new ImageIcon(getClass().getResource("./pinkGhost.png")).getImage();
+		redGhostPic = new ImageIcon(getClass().getResource("./redGhost.png")).getImage();
 		
 		//load in images for pacman 
-		pacmanDown = new ImageIcon(getClass().getResource("./pacmanDown.png")).getImage();
-		pacmanLeft = new ImageIcon(getClass().getResource("./pacmanLeft.png")).getImage();
-		pacmanRight = new ImageIcon(getClass().getResource("./pacmanRight.png")).getImage();
-		pacmanUp = new ImageIcon(getClass().getResource("./pacmanUp.png")).getImage();
+		pacmanDownPic = new ImageIcon(getClass().getResource("./pacmanDown.png")).getImage();
+		pacmanLeftPic = new ImageIcon(getClass().getResource("./pacmanLeft.png")).getImage();
+		pacmanRightPic = new ImageIcon(getClass().getResource("./pacmanRight.png")).getImage();
+		pacmanUpPic = new ImageIcon(getClass().getResource("./pacmanUp.png")).getImage();
+		
+		loadMap();
 		
 	}
+	// Init all of the Hashset for map
+	public void loadMap() {
+		walls = new HashSet<Block>();
+		pellets = new HashSet<Block>();
+		ghosts = new HashSet<Block>();
+		
+		//Going throght the map 
+		for (int r = 0; r < rowCount; r++) {
+			for (int c =0; c < columnCount; c++) {
+				String row = tileMap[r];
+				char tileMapChar = row.charAt(c);
+				
+				int x = c * tileSize;
+				int y = r * tileSize;
+				
+				if(tileMapChar == 'X') {
+					Block wall = new Block(wallPic, x, y, tileSize, tileSize);
+					walls.add(wall);
+				} 
+				else if (tileMapChar == 'b') {
+					Block ghost = new Block(blueGhostPic, x, y, tileSize, tileSize);
+					ghosts.add(ghost);
+				}
+				else if (tileMapChar == 'o') {
+					Block ghost = new Block(orangeGhostPic, x, y, tileSize, tileSize);
+					ghosts.add(ghost);
+				}	
+				else if (tileMapChar == 'p') {
+					Block ghost = new Block(pinkGhostPic, x, y, tileSize, tileSize);
+					ghosts.add(ghost);
+				}
+				else if (tileMapChar == 'r') {
+					Block ghost = new Block(redGhostPic, x, y, tileSize, tileSize);
+					ghosts.add(ghost);
+				 
+				} 
+				else if (tileMapChar == 'P') {
+					pacman = new Block(pacmanLeftPic, x, y, tileSize, tileSize);
+					
+				}
+				else if (tileMapChar == ' ') {
+					Block pellet = new Block(null, x + 14, y + 14, 4, 4);
+					pellets.add(pellet);
+				}
+			}
+		}
+			
+	}
 	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		draw(g);
+	}
+	public void draw(Graphics g) {
+		g.drawImage(pacman.image, pacman.x, pacman.y, pacman.width, pacman.height, null);
+		
+		for (Block ghost: ghosts) {
+			g.drawImage(ghost.image, ghost.x, ghost.y, ghost.width, ghost.height, null);
+		}
+		
+		for (Block wall: walls) {
+			g.drawImage(wall.image, wall.x, wall.y, wall.width, wall.height, null);
+		}
+		
+		g.setColor(Color.white);
+		for (Block pellet: pellets) {
+			g.fillRect(pellet.x, pellet.y, pellet.width, pellet.height);
+		}
+	}
 }
