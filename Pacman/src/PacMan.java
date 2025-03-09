@@ -8,7 +8,7 @@ import javax.swing.*;
 
 // Pacman will inherit JPanel
 // Push and Commit Testing
-public class PacMan extends JPanel {
+public class PacMan extends JPanel implements ActionListener {
 	
 	class Block{
 		int x;
@@ -86,6 +86,8 @@ public class PacMan extends JPanel {
 	HashSet<Block> ghosts;
 	Block pacman;
 	
+	Timer gameLoop;
+	
 	//Pacman Constructor
 	PacMan(){
 		setPreferredSize(new Dimension(boardWidth, boardHeight));
@@ -103,8 +105,9 @@ public class PacMan extends JPanel {
 		pacmanLeftPic = new ImageIcon(getClass().getResource("./pacmanLeft.png")).getImage();
 		pacmanRightPic = new ImageIcon(getClass().getResource("./pacmanRight.png")).getImage();
 		pacmanUpPic = new ImageIcon(getClass().getResource("./pacmanUp.png")).getImage();
-		
+		 
 		loadMap();
+		gameLoop = new Timer (50, this);
 		
 	}
 	// Init all of the Hashset for map
@@ -175,5 +178,10 @@ public class PacMan extends JPanel {
 		for (Block pellet: pellets) {
 			g.fillRect(pellet.x, pellet.y, pellet.width, pellet.height);
 		}
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		repaint();
+		
 	}
 }
