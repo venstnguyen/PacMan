@@ -11,7 +11,7 @@ public class App {
 		int tileSize = 32;
 		int boardWidth = columnCount * rowCount;
 		int boardHeight = rowCount * tileSize;
-		
+		 
 		
 		//creating the window object
 		JFrame window = new JFrame("Pac-Man");
