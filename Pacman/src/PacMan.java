@@ -14,4 +14,8 @@ public class PacMan extends JPanel implements ActionListener {
 	int tileSize = 32;
 	int boardWidth = columnCount * tileSize;
 	int boardHeight = rowCount * tileSize;
+	
+	PacMan(){
+		setPreferredSize(new Dimension(boardWidth, boardHeight));
+	}
 }
