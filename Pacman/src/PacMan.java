@@ -15,7 +15,15 @@ public class PacMan extends JPanel implements ActionListener {
 	int boardWidth = columnCount * tileSize;
 	int boardHeight = rowCount * tileSize;
 	
+	private Image wallImage;
+	private Image blueGhostImage;
+	private Image orangeGhostImage;
+	private Image redGhostImage;
+	private Image pinkGhostImage;
+
+	
 	PacMan(){
 		setPreferredSize(new Dimension(boardWidth, boardHeight));
+		setBackground(Color.BLACK);
 	}
 }
