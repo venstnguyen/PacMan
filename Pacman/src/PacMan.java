@@ -20,10 +20,15 @@ public class PacMan extends JPanel implements ActionListener {
 	private Image orangeGhostImage;
 	private Image redGhostImage;
 	private Image pinkGhostImage;
-
+	
+	private Image pacmanUpImage;
+	private Image pacmanDownImage;
+	private Image pacmanLeftnImage;
+	private Image pacmanRightImage;
 	
 	PacMan(){
 		setPreferredSize(new Dimension(boardWidth, boardHeight));
 		setBackground(Color.BLACK);
+		
 	}
 }
