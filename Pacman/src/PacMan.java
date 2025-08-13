@@ -8,7 +8,7 @@ import javax.swing.*;
 
 // Pacman will inherit JPanel
 // Push and Commit Testing
-public class PacMan extends JPanel implements ActionListener {
+public class PacMan extends JPanel {
 	int rowCount = 21;
 	int columnCount = 19;
 	int tileSize = 32;
@@ -30,5 +30,6 @@ public class PacMan extends JPanel implements ActionListener {
 		setPreferredSize(new Dimension(boardWidth, boardHeight));
 		setBackground(Color.BLACK);
 		
+		wallImage = new ImageIcon(getClass().getResource("./wall.png")).getImage();
 	}
 }
