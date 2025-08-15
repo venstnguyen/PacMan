@@ -31,5 +31,6 @@ public class PacMan extends JPanel {
 		setBackground(Color.BLACK);
 		
 		wallImage = new ImageIcon(getClass().getResource("./wall.png")).getImage();
+		blueGhostImage = new ImageIcon(getClass().getResource("./wall.png")).getImage();
 	}
 }
