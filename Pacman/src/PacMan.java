@@ -9,6 +9,15 @@ import javax.swing.*;
 // Pacman will inherit JPanel
 // Push and Commit Testing
 public class PacMan extends JPanel {
+	
+	class block{
+		int x;
+		int y;
+		int width;
+		int height;
+		Image image;
+	}
+	
 	int rowCount = 21;
 	int columnCount = 19;
 	int tileSize = 32;
