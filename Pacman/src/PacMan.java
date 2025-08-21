@@ -16,6 +16,20 @@ public class PacMan extends JPanel {
 		int width;
 		int height;
 		Image image;
+		
+		int startX;
+		int startY;
+		
+		block(Image image, int x, int y, int width, int height){
+			this.image = image;
+			this.x = x;
+			this.y = y;
+			this.width = width;
+			this.height = height;
+			
+			this.startX = x;
+			this.startY = y;
+		}
 	}
 	
 	int rowCount = 21;
@@ -34,6 +48,12 @@ public class PacMan extends JPanel {
 	private Image pacmanDownImage;
 	private Image pacmanLeftImage;
 	private Image pacmanRightImage;
+	
+	HashSet<block> walls;
+	HashSet<block> foods;
+	HashSet<block> ghosts;
+	block pacman;
+	
 	
 	PacMan(){
 		setPreferredSize(new Dimension(boardWidth, boardHeight));
