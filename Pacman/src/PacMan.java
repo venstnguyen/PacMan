@@ -10,7 +10,7 @@ import javax.swing.*;
 // Push and Commit Testing
 public class PacMan extends JPanel {
 	
-	class block{
+	class Block{
 		int x;
 		int y;
 		int width;
@@ -20,7 +20,7 @@ public class PacMan extends JPanel {
 		int startX;
 		int startY;
 		
-		block(Image image, int x, int y, int width, int height){
+		Block(Image image, int x, int y, int width, int height){
 			this.image = image;
 			this.x = x;
 			this.y = y;
@@ -75,10 +75,10 @@ public class PacMan extends JPanel {
         "XXXXXXXXXXXXXXXXXXX" 
     };
 	
-	HashSet<block> walls;
-	HashSet<block> foods;
-	HashSet<block> ghosts;
-	block pacman;
+	HashSet<Block> walls;
+	HashSet<Block> foods;
+	HashSet<Block> ghosts;
+	Block pacman;
 	
 	
 	PacMan(){
@@ -96,5 +96,29 @@ public class PacMan extends JPanel {
 		pacmanLeftImage = new ImageIcon(getClass().getResource("./pacmanLeft.png")).getImage();
 		pacmanRightImage = new ImageIcon(getClass().getResource("./pacmanRight.png")).getImage();
 
+	}
+	
+	
+	public void loadMap() {
+		walls = new HashSet<Block>();
+		foods = new HashSet<Block>();
+		ghosts = new HashSet<Block>();
+		
+		for (int r = 0; r < rowCount; r++) {
+			for (int c = 0; c < columnCount; c ++) {
+				String row = tileMap[r];
+				char tileMapChar = row.charAt(c);
+				
+				int x = c*tileSize;
+				int y = r*tileSize;
+				
+				if (tileMapChar == 'X') {
+					Block wall = new Block(wallImage, x, y, tileSize, tileSize){
+					walls.add(wall);
+					}
+				}
+			}
+		}
+		
 	}
 }
