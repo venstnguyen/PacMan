@@ -119,7 +119,21 @@ public class PacMan extends JPanel {
 				else if (tileMapChar == 'b'){ //for blue ghost
 					Block ghost = new Block(blueGhostImage, x, y, tileSize, tileSize);
 					ghosts.add(ghost);
-				}
+					}
+				else if (tileMapChar == 'r'){ //for red ghost
+					Block ghost = new Block(redGhostImage, x, y, tileSize, tileSize);
+					ghosts.add(ghost);
+					}
+				else if (tileMapChar == 'p'){ //for pink ghost
+					Block ghost = new Block(pinkGhostImage, x, y, tileSize, tileSize);
+					ghosts.add(ghost);
+					}
+				else if (tileMapChar == 'o'){ //for orange ghost
+					Block ghost = new Block(orangeGhostImage, x, y, tileSize, tileSize);
+					ghosts.add(ghost);
+					}
+				
+					}
 					
 				}
 			}
