@@ -112,10 +112,15 @@ public class PacMan extends JPanel {
 				int x = c*tileSize;
 				int y = r*tileSize;
 				
-				if (tileMapChar == 'X') {
-					Block wall = new Block(wallImage, x, y, tileSize, tileSize){
+				if (tileMapChar == 'X') { //for walls
+					Block wall = new Block(wallImage, x, y, tileSize, tileSize);
 					walls.add(wall);
 					}
+				else if (tileMapChar == 'b'){ //for blue ghost
+					Block ghost = new Block(blueGhostImage, x, y, tileSize, tileSize);
+					ghosts.add(ghost);
+				}
+					
 				}
 			}
 		}
